@@ -1,5 +1,6 @@
 const express = require('express'); // criação e controle de rotas
 const mongoose = require('mongoose'); // criação do objeto para banco de dados
+const routes = require('./routes'); // importantando as rotas
 
 const app = express(); // iniciando objeto para iniciar a aplicação
 
@@ -12,6 +13,10 @@ mongoose.connect('mongodb+srv://maycon:semsenha@banquinho-q4pme.mongodb.net/test
 // app.use() é uma regra que vai ser válido por todas as regras da aplicação
 // aplicação agora vai entender requições com corpo no formato json
 app.use(express.json())
+app.use(routes);
+
+
+app.listen(3333); // configurar uma porta para rodar a aplicação
 
 // Métodos HTTP: GET, POST, PUT, DELETE
 
@@ -24,14 +29,3 @@ app.use(express.json())
 //               Ex: /user/1
 // Body: request.body (Dados para criação ou alteração de um registro)
 //       muito usado: POST
-
-// rota principal
-// a array function recebe dois parâmetros fixos
-// request é a requisição e response é a reposta da resquisição
-app.post('/users/:id', (request, response) => {
-    console.log(request.body);
-    return response.json({ message: 'Hello Hello' });
-});
-
-app.listen(3333); // configurar uma porta para rodar a aplicação
-
