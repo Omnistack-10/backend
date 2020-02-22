@@ -1,6 +1,12 @@
 const express = require('express'); // criação e controle de rotas
+const mongoose = require('mongoose'); // criação do objeto para banco de dados
 
 const app = express(); // iniciando objeto para iniciar a aplicação
+
+mongoose.connect('mongodb+srv://maycon:semsenha@banquinho-q4pme.mongodb.net/testBanco?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // app.use() é uma regra que vai ser válido por todas as regras da aplicação
 // aplicação agora vai entender requições com corpo no formato json
