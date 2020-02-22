@@ -5,27 +5,31 @@ module.exports = {
     async store(request, response) {
         const { github_username, techs, latitude, longitude } = request.body;
 
-        const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
+        let dev = await Dev.findOne({ github_username });
 
-        const { name = login, avatar_url, bio } = apiResponse.data;
+        if (!dev) {
+            const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
 
-        // metodo trim remove espaços antes e depois de uma string
-        const techsArray = techs.split(',').map(tech => tech.trim());
+            const { name = login, avatar_url, bio } = apiResponse.data;
 
-        const location = {
-            type: 'Point',
-            coordinates: [longitude, latitude]
+            // metodo trim remove espaços antes e depois de uma string
+            const techsArray = techs.split(',').map(tech => tech.trim());
+
+            const location = {
+                type: 'Point',
+                coordinates: [longitude, latitude]
+            }
+
+            // função para salvar Dev
+            dev = await Dev.create({
+                github_username,
+                name,
+                avatar_url,
+                bio,
+                techs: techsArray,
+                location
+            });
         }
-
-        // função para salvar Dev
-        const dev = await Dev.create({
-            github_username,
-            name,
-            avatar_url,
-            bio,
-            techs: techsArray,
-            location
-        });
 
         return response.json(dev);
     }
