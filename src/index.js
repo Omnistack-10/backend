@@ -5,7 +5,7 @@ const routes = require('./routes'); // importantando as rotas
 const app = express(); // iniciando objeto para iniciar a aplicação
 
 // https://account.mongodb.com/account/login
-mongoose.connect('mongodb+srv://maycon:semsenha@banquinho-q4pme.mongodb.net/testBanco?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://maycon:semsenha@cluster0-nbq7g.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
