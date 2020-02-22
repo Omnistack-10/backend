@@ -4,6 +4,9 @@
   "main": "index.js",
   "repository": "git@gitlab.com:omnistack10/backend.git",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
