@@ -3,6 +3,7 @@ const mongoose = require('mongoose'); // criação do objeto para banco de dados
 
 const app = express(); // iniciando objeto para iniciar a aplicação
 
+// https://account.mongodb.com/account/login
 mongoose.connect('mongodb+srv://maycon:semsenha@banquinho-q4pme.mongodb.net/testBanco?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
