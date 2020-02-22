@@ -1,0 +1,7 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:omnistack10/backend.git",
+  "license": "MIT"
+}
