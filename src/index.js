@@ -1,5 +1,6 @@
 const express = require('express'); // criação e controle de rotas
 const mongoose = require('mongoose'); // criação do objeto para banco de dados
+const cors = require('cors');
 const routes = require('./routes'); // importantando as rotas
 
 const app = express(); // iniciando objeto para iniciar a aplicação
@@ -12,6 +13,7 @@ mongoose.connect('mongodb+srv://maycon:semsenha@cluster0-nbq7g.mongodb.net/test?
 
 // app.use() é uma regra que vai ser válido por todas as regras da aplicação
 // aplicação agora vai entender requições com corpo no formato json
+app.use(cors());
 app.use(express.json())
 app.use(routes);
 
