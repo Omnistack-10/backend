@@ -4,8 +4,11 @@ const cors = require('cors');
 const http = require('http'); // fazer que a aplicação responda a requições http e as requições websockets
 const routes = require('./routes'); // importantando as rotas
 
+const { setupWebsocket } = require('./websocket.js'); 
 const app = express(); // iniciando objeto para iniciar a aplicação
 const server = http.Server(app); // extrai da aplicação express, o servidor http, que está fora da aplicação express
+
+setupWebsocket(server);
 
 // https://account.mongodb.com/account/login
 mongoose.connect('mongodb+srv://maycon:semsenha@cluster0-nbq7g.mongodb.net/test?retryWrites=true&w=majority', {
